@@ -84,5 +84,39 @@
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "testEnvironment": "jsdom"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": "> 0.25%, not dead"
+        }
+      ],
+      [
+        "@babel/preset-react"
+      ]
+    ]
+  },
+  "browserslist": [
+    "> 0.25%",
+    "not dead"
+  ],
+  "postcss": {
+    "plugins": [
+      "postcss-import",
+      "tailwindcss",
+      "autoprefixer",
+      "postcss-nested"
+    ]
+  },
+  "tailwind": {
+    "purge": [],
+    "darkMode": false,
+    "theme": {
+      "extend": {}
+    },
+    "variants": {},
+    "plugins": []
   }
 }
