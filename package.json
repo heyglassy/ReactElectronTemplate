@@ -5,11 +5,11 @@
   "description": "temp",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx webpack build && electron .",
     "rebuild": "electron-rebuild",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "test": "jest"
   },
   "keywords": [],
   "license": "ISC",
@@ -24,6 +24,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.57",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
     "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "@testing-library/react": "^12.0.0",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "babel-preset-airbnb": "^5.0.0",
@@ -39,10 +40,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.6",
     "path": "^0.12.7",
     "postcss": "^8.3.2",
     "postcss-loader": "^6.1.0",
     "prettier": "^2.3.1",
+    "spectron": "^15.0.0",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.1.4",
     "webpack": "^5.38.1",
@@ -73,5 +77,12 @@
         }
       ]
     }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "jsdom"
   }
 }

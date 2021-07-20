@@ -1,6 +1,6 @@
 // import { ipcRenderer } from "electron";
 import React from "react";
-import "./helloworld.css";
+import "../../tailwind.css";
 
 const App = () => {
   const handleSubmit = (e) => {
@@ -11,7 +11,9 @@ const App = () => {
   };
   return (
     <div>
-      <h1>Hello World!</h1>
+      <h1 id="test" className="text-lg font-semibold HelloWorld">
+        Hello World!
+      </h1>
     </div>
   );
 };

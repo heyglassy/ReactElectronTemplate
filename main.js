@@ -1,5 +1,4 @@
 const { app, BrowserWindow, autoUpdater, dialog } = require("electron");
-const { release } = require("os");
 const path = require("path");
 const Ipc = require("./src/Ipc/script");
 
