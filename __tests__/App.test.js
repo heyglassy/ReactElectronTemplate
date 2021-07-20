@@ -18,11 +18,8 @@ describe("Test", function () {
   });
 
   it("does stuff", function () {
-    return this.app.client
-      .getWindowCount()
-      .then(function (count) {
-        expect(count).toBe(1);
-      })
-      .catch((e) => console.log(e));
+    return this.app.client.getWindowCount().then(function (count) {
+      expect(count).toBe(1);
+    });
   });
 });
