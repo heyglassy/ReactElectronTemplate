@@ -24,8 +24,8 @@ describe("Test", function () {
   });
   
     it("does stuff 2", function () {
-    return this.app.client.getWindowCount().then(function (count) {
-      expect(count).toBe(1);
+    return this.app.client.getTitle().then(function (value) {
+      expect(value).toBe("Document");
     });
   });
 });
