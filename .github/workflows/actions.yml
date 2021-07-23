@@ -26,6 +26,7 @@ jobs:
       - name: Install NPM packages
         run: npm ci
       - name: Build NPM
+        run: pwd
         run: npm run build
       - uses: GabrielBB/xvfb-action@v1
         with: 
