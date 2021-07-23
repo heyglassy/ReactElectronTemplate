@@ -26,7 +26,10 @@ jobs:
       - name: Install NPM packages
         run: npm ci
       - uses: GabrielBB/xvfb-action@v1
-      - name: Test Jest
-        run: npm test
-      - name: Test Mocha
-        run: npm run test2
+        with: 
+          name: Test Jest
+          run: npm run test
+      - uses: GabrielBB/xvfb-action@v1
+        with: 
+          name: Test Mocha
+          run: npm run test2
