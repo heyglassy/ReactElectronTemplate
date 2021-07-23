@@ -10,14 +10,14 @@ const app = new Application({
 });
 
 describe("test 2", () => {
-  jest.setTimeout(10000);
+  jest.setTimeout(100000);
 
   beforeEach(() => {
     return app.start();
   });
 
   afterEach(() => {
-    if (app.isRunning() && app) {
+    if (app.isRunning()) {
       return app.stop();
     }
   });
