@@ -25,6 +25,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install NPM packages
         run: npm ci
+      - name: Build NPM
+        run: npm build
       - uses: GabrielBB/xvfb-action@v1
         with: 
           name: Test Mocha

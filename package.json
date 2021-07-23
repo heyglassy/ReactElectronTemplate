@@ -5,7 +5,8 @@
   "description": "temp",
   "main": "main.js",
   "scripts": {
-    "start": "npx webpack build && electron .",
+    "start": "webpack build && electron .",
+    "build": "webpack build --config prod.config.js",
     "rebuild": "electron-rebuild",
     "package": "electron-forge package",
     "make": "electron-forge make",
