@@ -32,4 +32,4 @@ jobs:
       - uses: GabrielBB/xvfb-action@v1
         with: 
           name: Test Mocha
-          run: npm run test2
+          run: npm run test
