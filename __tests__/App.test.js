@@ -56,4 +56,10 @@ describe("test 2", () => {
 
     expect(value).toBe("93.184.216.34");
   });
+  
+    it("does stuff 2", function () {
+    return this.app.client.getTitle().then(function (value) {
+      expect(value).toBe("Document");
+    });
+  });
 });
