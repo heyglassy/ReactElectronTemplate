@@ -32,9 +32,15 @@ describe("Test2", function () {
     assert.strictEqual(title, "Document");
   });
   
-    it("does stuff 2.5", async () => {
-    const title = await app.client.$(".HelloWorld").getText().catch((e) => console.log(e));
-    assert.strictEqual(title, "HelloWorld");
+  it("does stuff 2.5", async () => {
+    let value = await (await app.client.$(".HelloWorld"))
+      .getText()
+      .catch((e) => console.log(e));
+    // const title = await app.client
+    //   .$(".HelloWorld")
+    //   .getHTML()
+    //   .catch((e) => console.log(e));
+    assert.strictEqual(value, "HelloWorld!");
   });
 
   it("does stuff 3", async () => {
