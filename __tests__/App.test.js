@@ -2,7 +2,7 @@ import path from "path";
 import { expect } from "@jest/globals";
 import { Application } from "spectron";
 import Electron from "electron";
-import "@babel/polyfill"
+import "@babel/polyfill"; // Depricated
 
 const app = new Application({
   path: Electron,
