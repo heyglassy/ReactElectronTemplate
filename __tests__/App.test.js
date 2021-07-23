@@ -1,7 +1,8 @@
 import path from "path";
-import jest, { expect } from "@jest/globals";
+import { expect } from "@jest/globals";
 import { Application } from "spectron";
 import Electron from "electron";
+import "@babel/polyfill"
 
 const app = new Application({
   path: Electron,
@@ -55,11 +56,5 @@ describe("test 2", () => {
       .catch((e) => console.log(e));
 
     expect(value).toBe("93.184.216.34");
-  });
-  
-    it("does stuff 2", function () {
-    return this.app.client.getTitle().then(function (value) {
-      expect(value).toBe("Document");
-    });
   });
 });
