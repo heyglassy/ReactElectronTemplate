@@ -31,6 +31,11 @@ describe("Test2", function () {
     const title = await app.client.getTitle().catch((e) => console.log(e));
     assert.strictEqual(title, "Document");
   });
+  
+    it("does stuff 2.5", async () => {
+    const title = await app.client.$(.HelloWorld).getText().catch((e) => console.log(e));
+    assert.strictEqual(title, "HelloWorld");
+  });
 
   it("does stuff 3", async () => {
     await app.client
