@@ -29,3 +29,5 @@ jobs:
         with:
           name: Running Tests
           run: npm test
+          name: RUnning test 2
+          run: npm run test2
