@@ -33,8 +33,26 @@ describe("test 2", () => {
     const title = await app.client.getTitle().catch((e) => console.log(e));
     expect(title).toBe("Document");
   });
+  
+  it("does stuff 3.5", async () => {
+    await app.client
+      .$(".text")
+      .then((text) => {
+        text.addValue("example.com").catch((e) => {
+          console.log(e);
+        });
+      })
+      .catch((e) => console.log(e));
+
+    let value = await (await app.client.$(".text"))
+      .getValue()
+      .catch((e) => console.log(e));
+    console.log(value)
+    expect(value).toBe("example.com");
+  });
 
   it("does stuff 3", async () => {
+    console.log(app.client)
     await app.client
       .$(".text")
       .then((text) => {
@@ -54,6 +72,7 @@ describe("test 2", () => {
     let value = await (await app.client.$(".ip"))
       .getText()
       .catch((e) => console.log(e));
+    console.log(value)
 
     expect(value).toBe("93.184.216.34");
   });
