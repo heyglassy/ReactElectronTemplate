@@ -10,7 +10,7 @@ const app = new Application({
 });
 
 describe("test 2", () => {
-  jest.setTimeout(100000);
+  jest.setTimeout(1000000);
 
   beforeEach(() => {
     return app.start();
