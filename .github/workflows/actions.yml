@@ -25,5 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install NPM packages
         run: npm ci
-      - name: Running Tests
-        run: npm test
+      - uses: GabrielBB/xvfb-action@v1
+        with:
+          name: Running Tests
+          run: npm test
