@@ -25,8 +25,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install NPM packages
         run: npm ci
-      - name: Build NPM
+      - name: pwd
         run: pwd
+      - name: Build NPM
         run: npm run build
       - uses: GabrielBB/xvfb-action@v1
         with: 
