@@ -33,7 +33,7 @@ describe("Test2", function () {
   });
   
     it("does stuff 2.5", async () => {
-    const title = await app.client.$(.HelloWorld).getText().catch((e) => console.log(e));
+    const title = await app.client.$(".HelloWorld").getText().catch((e) => console.log(e));
     assert.strictEqual(title, "HelloWorld");
   });
 
