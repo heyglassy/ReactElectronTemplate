@@ -31,7 +31,7 @@ describe("E2E Testing the entire application ensures that...", () => {
 
   it("the electron app is titled properly.", async () => {
     const title = await app.client.getTitle();
-    expect(title).toBe("Document");
+    expect(title).toBe("React Electron Template");
   });
 
   it("when text is inputted into the text field and the button is clicked, the correct ip address is returned.", async () => {
