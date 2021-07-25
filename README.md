@@ -8,7 +8,7 @@
 
 A template to make starting a React + Electron project easier.
 
-RET has flexible styling, compiles quickly, has component and E2E testing, CI with github, and is security optimized.
+RET has flexible styling, compiles quickly, has component & E2E testing, CI with github, and is security optimized.
 
 # Getting Started
 
