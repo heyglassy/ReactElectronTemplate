@@ -1,5 +1,5 @@
 import React, { useState as useStateMock } from "react";
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import HelloWorld from "../src/components/HelloWorld";
 import userEvent from "@testing-library/user-event";
 
@@ -10,11 +10,11 @@ jest.mock("react", () => ({
 
 const setState = jest.fn();
 
-describe("test", () => {
+describe("Unit testing the Helloworld component ensures that...", () => {
   beforeAll(() => {
     useStateMock.mockImplementation((init) => [init, setState]);
   });
-  it("tests", () => {
+  it("the component can render.", () => {
     const element = document.createElement("div");
     const { container } = render(<HelloWorld />, {
       container: document.body.appendChild(element),
@@ -22,7 +22,7 @@ describe("test", () => {
     expect(container).toBeDefined();
   });
 
-  it("test 2", () => {
+  it("the component contains the text 'Hello World'", () => {
     const element = document.createElement("div");
     const { container } = render(<HelloWorld />, {
       container: document.body.appendChild(element),
@@ -30,7 +30,7 @@ describe("test", () => {
     expect(container.firstChild.textContent).toBe("Hello World!");
   });
 
-  it("test 3", () => {
+  it("when inputting text into the text field, the state updates.", () => {
     const element = document.createElement("div");
     const { container } = render(<HelloWorld />, {
       container: document.body.appendChild(element),

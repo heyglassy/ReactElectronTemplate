@@ -7,12 +7,12 @@ import "@babel/polyfill"; // Depricated
 const app = new Application({
   path: Electron,
   args: [path.join(__dirname, "../main.js")],
-  connectionRetryCount: 3000000,
-  quitTimeout: 10000,
+  connectionRetryCount: 3000000, //This is to ensure that the windows hae enough time to connect to ChromeDriver
+  quitTimeout: 10000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
 });
 
-describe("test 2", () => {
-  jest.setTimeout(1000000);
+describe("E2E Testing the entire application ensures that...", () => {
+  jest.setTimeout(1000000); // This timeout is to ensure that jest does not stop the tests before they finish running
 
   beforeEach(() => {
     return app.start();
@@ -24,39 +24,26 @@ describe("test 2", () => {
     }
   });
 
-  it("does stuff", async () => {
-    const count = await app.client
-      .getWindowCount()
-      .catch((e) => console.log(e));
+  it("the electron app starts a window.", async () => {
+    const count = await app.client.getWindowCount();
     expect(count).toBe(1);
   });
 
-  it("does stuff 2", async () => {
-    const title = await app.client.getTitle().catch((e) => console.log(e));
+  it("the electron app is titled properly.", async () => {
+    const title = await app.client.getTitle();
     expect(title).toBe("Document");
   });
 
-  it("does stuff 3", async () => {
-    console.log(app.client);
-    await app.client
-      .$(".text")
-      .then((text) => {
-        text.addValue("example.com").catch((e) => {
-          console.log(e);
-        });
-      })
-      .catch((e) => console.log(e));
+  it("when text is inputted into the text field and the button is clicked, the correct ip address is returned.", async () => {
+    await app.client.$(".text").then((text) => {
+      text.addValue("example.com");
+    });
 
-    await app.client
-      .$(".button")
-      .then((button) => {
-        button.click();
-      })
-      .catch((e) => console.log(e));
+    await app.client.$(".button").then((button) => {
+      button.click();
+    });
 
-    let value = await (await app.client.$(".ip"))
-      .getText()
-      .catch((e) => console.log(e));
+    let value = await (await app.client.$(".ip")).getText();
 
     expect(value).toBe("93.184.216.34");
   });

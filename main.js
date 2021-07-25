@@ -1,4 +1,10 @@
-const { app, BrowserWindow, autoUpdater, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  autoUpdater,
+  dialog,
+  session,
+} = require("electron");
 const path = require("path");
 const Ipc = require("./src/Ipc/script");
 
@@ -9,9 +15,7 @@ function createWindow() {
     width: 800,
     height: 800,
     webPreferences: {
-      nodeIntegration: false,
       contextIsolation: true,
-      enableRemoteModule: false,
       preload: path.join(__dirname, "src/preload.js"),
     },
   });
@@ -22,6 +26,23 @@ function createWindow() {
 // Fulfilled when electron is initializing, convientent alternative to subscribing to app.isReady()
 app.whenReady().then(() => {
   createWindow();
+  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        "Content-Security-Policy": ["'unsafe-eval'"],
+      },
+    });
+  });
+
+  session
+    .fromPartition("partition")
+    .setPermissionRequestHandler((webContents, permission, callback) => {
+      if (permission === "notifications") {
+        callback(true);
+      }
+      return callback(false);
+    });
 });
 
 const server = "https://localhost:5432";
@@ -51,5 +72,24 @@ autoUpdater.on("error", (message) => {
 setInterval(() => {
   autoUpdater.checkForUpdates();
 }, 60000);
+
+app.on("web-contents-created", (event, contents) => {
+  contents.on("will-navigate", (event, navigationUrl) => {
+    event.preventDefault();
+  });
+
+  contents.setWindowOpenHandler(({ url }) => {
+    return { action: "deny" };
+  });
+
+  contents.on("will-attach-webview", (event, webPreferences, params) => {
+    delete webPreferences.preload;
+    delete webPreferences.preloadURL;
+
+    webPreferences.nodeIntegration = false;
+
+    event.preventDefault();
+  });
+});
 
 Ipc();
