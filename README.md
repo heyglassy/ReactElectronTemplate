@@ -4,7 +4,7 @@
 
 ### Author: Christian Glassiognon
 
-#### [heyglassy.co](heyglassy.co)
+#### [heyglassy.co](https://heyglassy.co)
 
 A template to make starting a React + Electron project easier.
 
