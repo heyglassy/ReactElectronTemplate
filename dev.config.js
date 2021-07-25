@@ -7,7 +7,6 @@ module.exports = {
   watch: true,
   cache: false,
   watchOptions: {
-    poll: 1000,
     followSymlinks: true,
     ignored: /node_modules/,
   },

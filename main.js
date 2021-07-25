@@ -7,6 +7,7 @@ const {
 } = require("electron");
 const path = require("path");
 const Ipc = require("./src/Ipc/script");
+require("dotenv").config();
 
 let win;
 
@@ -27,10 +28,12 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    let csp =
+      process.env.ENV === "development" ? "unsafe-eval" : "script-src 'self'";
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        "Content-Security-Policy": ["'unsafe-eval'"],
+        "Content-Security-Policy": csp,
       },
     });
   });
