@@ -7,7 +7,7 @@ import "@babel/polyfill"; // Depricated
 const app = new Application({
   path: Electron,
   args: [path.join(__dirname, "../main.js")],
-  quitTimeout: 5000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
+  quitTimeout: 10000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
 });
 
 describe("E2E Testing the entire application ensures that...", () => {
