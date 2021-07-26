@@ -14,6 +14,7 @@ module.exports = {
         test: /\.m?js$/,
         exclude: [
           /node_modules/,
+          /__tests__/,
           path.join(__dirname, "main.js"),
           /Ipc/,
           path.join(__dirname, "preload.js"),

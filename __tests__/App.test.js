@@ -7,7 +7,8 @@ import "@babel/polyfill"; // Depricated
 const app = new Application({
   path: Electron,
   args: [path.join(__dirname, "../main.js")],
-  quitTimeout: 10000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
+  connectionRetryCount: 30000, //This is to ensure that the windows hae enough time to connect to ChromeDriver
+  quitTimeout: 5000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
 });
 
 describe("E2E Testing the entire application ensures that...", () => {
@@ -34,7 +35,7 @@ describe("E2E Testing the entire application ensures that...", () => {
   });
 
   it("when text is inputted into the text field and the button is clicked, the correct ip address is returned.", async () => {
-    await app.client.$(".text").then((text) => {
+    await app.client.$(".input").then((text) => {
       text.addValue("example.com");
     });
 

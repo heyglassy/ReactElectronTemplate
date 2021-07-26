@@ -1,5 +1,3 @@
-// import { ipcRenderer } from "electron";
-import { shell } from "electron";
 import React from "react";
 import { useState } from "react";
 import "../../tailwind.css";
@@ -26,7 +24,7 @@ const App = () => {
       {ip ? <h1 className="m-2 text-center ip">{ip}</h1> : null}
       <input
         value={url}
-        className="m-2 h-7 text-white bg-black text-purple-400 text"
+        className="m-2 h-7 text-white bg-black text-purple-400 input"
         type="text"
         placeholder="Enter URL here."
         onChange={(e) => {
