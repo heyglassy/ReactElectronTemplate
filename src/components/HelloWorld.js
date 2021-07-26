@@ -1,4 +1,5 @@
 // import { ipcRenderer } from "electron";
+import { shell } from "electron";
 import React from "react";
 import { useState } from "react";
 import "../../tailwind.css";
@@ -18,13 +19,16 @@ const App = () => {
     setUrl("");
   };
   return (
-    <div>
-      <h1 className="text-lg font-semibold HelloWorld">Hello World!</h1>
-      {ip ? <h1 className="ip">{ip}</h1> : null}
+    <div className="flex flex-col justify-items-center m-10">
+      <h1 className="text-lg font-semibold HelloWorld text-center m-2">
+        Domain Name to IP Address Lookup
+      </h1>
+      {ip ? <h1 className="m-2 text-center ip">{ip}</h1> : null}
       <input
         value={url}
-        className="bg-gradient-to-r from-green-400 to-blue-500 text-purple-400 text"
+        className="m-2 h-7 text-white bg-black text-purple-400 text"
         type="text"
+        placeholder="Enter URL here."
         onChange={(e) => {
           setUrl(e.target.value);
           setIp();
@@ -33,8 +37,20 @@ const App = () => {
       <input
         type="button"
         onClick={handleSubmit}
-        value="Lookup"
-        className="button"
+        value="Lookup URL"
+        className="m-2 h-7 lookup bg-gradient-to-r from-green-400 to-blue-500 text-white"
+      />
+      <input
+        type="button"
+        onClick={() =>
+          window.open(
+            "https://github.com",
+            "_blank",
+            "top=500,left=200,frame=false,nodeIntegration=no"
+          )
+        }
+        value="Docs"
+        className="m-2 h-7 docs bg-gradient-to-r from-green-400 to-blue-500 text-white"
       />
     </div>
   );

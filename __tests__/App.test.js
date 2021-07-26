@@ -7,8 +7,7 @@ import "@babel/polyfill"; // Depricated
 const app = new Application({
   path: Electron,
   args: [path.join(__dirname, "../main.js")],
-  connectionRetryCount: 3000000, //This is to ensure that the windows hae enough time to connect to ChromeDriver
-  quitTimeout: 10000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
+  quitTimeout: 5000, // This is to ensure that Spectron does not throw an error because the windows do not close quickly enough.
 });
 
 describe("E2E Testing the entire application ensures that...", () => {
@@ -39,7 +38,7 @@ describe("E2E Testing the entire application ensures that...", () => {
       text.addValue("example.com");
     });
 
-    await app.client.$(".button").then((button) => {
+    await app.client.$(".lookup").then((button) => {
       button.click();
     });
 

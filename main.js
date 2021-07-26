@@ -4,6 +4,7 @@ const {
   autoUpdater,
   dialog,
   session,
+  shell,
 } = require("electron");
 const path = require("path");
 const Ipc = require("./src/Ipc/script");
@@ -81,8 +82,18 @@ app.on("web-contents-created", (event, contents) => {
     event.preventDefault();
   });
 
+  let isSafeForExternalOpen = (url) => {
+    if (url.startsWith("https://github.com")) {
+      return true;
+    }
+  };
+
   contents.setWindowOpenHandler(({ url }) => {
-    return { action: "deny" };
+    if (isSafeForExternalOpen(url)) {
+      setImmediate(() => {
+        shell.openExternal(url);
+      });
+    }
   });
 
   contents.on("will-attach-webview", (event, webPreferences, params) => {
