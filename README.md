@@ -31,3 +31,8 @@ Test: npm run test
 - Built on Webpack & Electron Forge
   - Sub 6s development compilation
 - Styled with Tailwind CSS
+
+# Upcoming Features
+
+- CD with Github Actions
+- Update Server guide
