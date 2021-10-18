@@ -10,13 +10,5 @@ pipeline{
           }
         }
       }
-      stage('Test'){
-        steps {
-          nodejs(nodeJSInstallationName: '16.11.1') {
-            sh 'npm ci'
-            sh 'npm run test'
-          }
-      }
-    }
   }
 }
